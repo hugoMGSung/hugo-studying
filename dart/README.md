@@ -104,6 +104,173 @@
 
 #### 조건문
 - if () else if () else () 
+- switch case
 
 #### 반복문
+- for (int i = 0; i < 10; i++)
+- while (true)
+- break, continue
 
+#### 함수
+- 함수 문법
+
+    ```dart
+    calc(int x, [int y = 10, int z = 15]) {
+        int sum = x + y + z;
+
+        print('x : $x, y : $y, z : $z');
+
+        if (sum % 2 == 0) {
+            print('짝수');
+        } else {
+            print('홀수');
+        }
+    }
+
+    calc({
+        required int x,
+        required int y,
+        required int z,
+    }) { 
+        ...
+    }
+
+    void main() {
+        calc(z : 22, y : 11, x : 33);
+    }
+    ```
+
+- 람다 방식
+
+    ```dart
+    typedef Operation = int Function(int x, int y, int z);
+
+    int add(int x, int y, int z) => x + y + z;
+    int subtract(int x, int y, int z) => x - y - z;
+
+    int calculate(int x, int y, int z, Operation operation) {
+        return operation(x, y, z);
+    }
+
+    Operation op = add;
+
+    int result= op(5, 6, 7);
+
+    int result2 = calculate(4, 5, 6, add);  
+    ```
+
+### 객체지향
+
+#### 클래스
+- Person 클래스
+
+    ```dart
+    // person.dart
+    class Person {
+        String name;
+        int age;
+
+        // 기본 생성자
+        Person(this.name, this.age);
+
+        // named constructor
+        Person.anonymous() : name = 'Anonymous', age = 0;
+
+        void sayHello() {
+            print('안녕, 나는 $name, $age 살이야.');
+        }
+
+        @override
+        String toString() => 'Person(name: $name, age: $age)';
+    }
+
+    void main() {
+        var p1 = Person('지우', 28);
+        var p2 = Person.anonymous();
+        p1.sayHello();
+        print(p2);
+    }
+    ```
+
+#### 중급 객체지향은 패스
+
+
+### 함수형
+
+#### 함수형 프로그래밍
+
+- Map 사용
+
+    ```dart
+    Map<String, int> superHeros = {
+        'Ironman': 900,
+        'Thor': 1300,
+        'Spiderman': 850
+    };
+
+    final result = superHeros.map(
+        (key, value) => MapEntry(
+            'Marvel Hero $key',
+            'Power $value',
+        ),
+    );
+
+    final keys = superHeros.keys.map((x) => 'Marvel $x').toList();
+    final values = superHeros.values.map((x) => 'Power $x').toList();
+
+    ```
+
+- Set 동일
+- 컬렉션 호환
+
+    ```dart
+    List<Map<String, int>> heros = [
+    {
+        'Ironman': 900,
+        'Group': 0, // 0 means Marvel
+    },
+    {
+        'Superman': 2600,
+        'Group': 1, // 1 means DC
+    },
+    {'Black Widow': 500, 'Group': 0},
+    ];
+
+    print(heros);
+    print(heros.where((x) => x['Group'] == 0));
+    ```
+
+- .toList() 로 리스트화 
+
+
+- reduce()
+
+    ```dart
+    List<int> numbers = [1,2,3,4,5,6,7];
+
+    final result = numbers.reduce((prev, next) {
+        print('--------------');
+        print('prev : $prev');
+        print('next : $next');
+
+        return prev + next;
+    });
+
+    print(result);
+    ```
+
+- fold() ...
+
+    - TO BE Continued...
+
+
+
+### 비동기 프로그래밍
+
+#### Future
+
+- 미래에 받아올 값
+
+    ```dart
+    
+    ```
